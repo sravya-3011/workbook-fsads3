@@ -5,9 +5,10 @@ import com.klu.model.Student;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/student")
 public class StudentController {
 
-    @GetMapping("/student/{id}")
+    @GetMapping("/{id}")
     public Student getStudent(@PathVariable int id) {
 
         if(id <= 0){
@@ -15,9 +16,9 @@ public class StudentController {
         }
 
         if(id != 101){
-            throw new StudentNotFoundException("Student with ID "+id+" not found");
+            throw new StudentNotFoundException("Student with ID " + id + " not found");
         }
 
-        return new Student(101,"Harika","CSE");
+        return new Student(101, "Harika", "CSE");
     }
 }
